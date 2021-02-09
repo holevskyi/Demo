@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default suite]" parallel="none">
   <test name="Default test(failed)" parallel="none">
     <classes>
-      <class name="Demo.Login">
+      <class name="Demo.UserPermissions">
         <methods>
+          <include name="testUserPermissions"/>
           <include name="tearDown"/>
           <include name="setUp"/>
-          <include name="testLogin64"/>
         </methods>
-      </class> <!-- Demo.Login -->
+      </class> <!-- Demo.UserPermissions -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

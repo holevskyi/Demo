@@ -1,6 +1,5 @@
 package Demo;
 
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 import org.testng.annotations.*;
 
@@ -9,7 +8,6 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import static org.testng.Assert.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.Select;
 
 public class UserCRUD {
 	private WebDriver driver;

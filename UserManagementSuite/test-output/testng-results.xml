@@ -2,28 +2,35 @@
 <testng-results skipped="0" failed="1" total="1" passed="0">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="12909" started-at="2021-02-06T15:50:10Z" finished-at="2021-02-06T15:50:23Z">
+  <suite name="Default suite" duration-ms="36981" started-at="2021-02-09T20:00:30Z" finished-at="2021-02-09T20:01:07Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="12909" started-at="2021-02-06T15:50:10Z" finished-at="2021-02-06T15:50:23Z">
-      <class name="Demo.Login">
-        <test-method status="PASS" signature="setUp()[pri:0, instance:Demo.Login@240237d2]" name="setUp" is-config="true" duration-ms="5353" started-at="2021-02-06T16:50:10Z" finished-at="2021-02-06T16:50:15Z">
+    <test name="Default test" duration-ms="36981" started-at="2021-02-09T20:00:30Z" finished-at="2021-02-09T20:01:07Z">
+      <class name="Demo.UserPermissions">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:Demo.UserPermissions@780cb77]" name="setUp" is-config="true" duration-ms="5319" started-at="2021-02-09T21:00:30Z" finished-at="2021-02-09T21:00:35Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="FAIL" signature="testLogin64()[pri:0, instance:Demo.Login@240237d2]" name="testLogin64" duration-ms="6425" started-at="2021-02-06T16:50:15Z" finished-at="2021-02-06T16:50:22Z">
-          <exception class="java.lang.AssertionError">
+        <test-method status="FAIL" signature="testUserPermissions()[pri:0, instance:Demo.UserPermissions@780cb77]" name="testUserPermissions" duration-ms="30568" started-at="2021-02-09T21:00:35Z" finished-at="2021-02-09T21:01:06Z">
+          <exception class="org.openqa.selenium.NoSuchElementException">
             <message>
-              <![CDATA[expected [false] but found [true]]]>
+              <![CDATA[Cannot locate an element using xpath=//div[@id='__upisComponents.PojoListItem1110.closedState']/div/div
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'DESKTOP-I1MH8RV', ip: '192.168.1.105', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_251'
+Driver info: driver.version: RemoteWebDriver]]>
             </message>
             <full-stacktrace>
-              <![CDATA[java.lang.AssertionError: expected [false] but found [true]
-	at org.testng.Assert.fail(Assert.java:94)
-	at org.testng.Assert.failNotEquals(Assert.java:494)
-	at org.testng.Assert.assertEquals(Assert.java:123)
-	at org.testng.Assert.assertEquals(Assert.java:286)
-	at org.testng.Assert.assertEquals(Assert.java:296)
-	at Demo.Login.testLogin64(Login.java:36)
+              <![CDATA[org.openqa.selenium.NoSuchElementException: Cannot locate an element using xpath=//div[@id='__upisComponents.PojoListItem1110.closedState']/div/div
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'DESKTOP-I1MH8RV', ip: '192.168.1.105', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_251'
+Driver info: driver.version: RemoteWebDriver
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:327)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:428)
+	at org.openqa.selenium.By$ByXPath.findElement(By.java:353)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
+	at Demo.UserPermissions.testUserPermissions(UserPermissions.java:58)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
@@ -50,15 +57,15 @@
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
 ]]>
             </full-stacktrace>
-          </exception> <!-- java.lang.AssertionError -->
+          </exception> <!-- org.openqa.selenium.NoSuchElementException -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- testLogin64 -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:Demo.Login@240237d2]" name="tearDown" is-config="true" duration-ms="1066" started-at="2021-02-06T16:50:22Z" finished-at="2021-02-06T16:50:23Z">
+        </test-method> <!-- testUserPermissions -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:Demo.UserPermissions@780cb77]" name="tearDown" is-config="true" duration-ms="999" started-at="2021-02-09T21:01:06Z" finished-at="2021-02-09T21:01:07Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- Demo.Login -->
+      </class> <!-- Demo.UserPermissions -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
