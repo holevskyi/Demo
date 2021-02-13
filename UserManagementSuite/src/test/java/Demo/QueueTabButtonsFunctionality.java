@@ -2,27 +2,23 @@ package Demo;
 
 import java.util.concurrent.TimeUnit;
 import org.testng.annotations.*;
-
-import io.github.bonigarcia.wdm.WebDriverManager;
-
 import static org.testng.Assert.*;
 import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
-public class StorageUpload {
+public class QueueTabButtonsFunctionality {
 	private WebDriver driver;
 	private boolean acceptNextAlert = true;
 	private StringBuffer verificationErrors = new StringBuffer();
 
 	@BeforeClass(alwaysRun = true)
 	public void setUp() throws Exception {
-		WebDriverManager.chromedriver().setup();
-		driver = new ChromeDriver();
+		driver = new FirefoxDriver();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	}
 
 	@Test
-	public void testStorageUpload() throws Exception {
+	public void testQueueTabButtomsFunctionality() throws Exception {
 		// login into WebOps as test/test
 		driver.get("http://185.13.87.17:6011/webops/index.html?uid=testOps1");
 		driver.findElement(By.id("usernameBox")).click();
@@ -40,41 +36,52 @@ public class StorageUpload {
 		if (isAlertPresent()) {
 			System.out.println(closeAlertAndGetItsText());
 		}
-
-		// navigate to the Storage tab
+		
+		//find and navigate to the queue tab
 		driver.findElement(By.id("textarea.textField")).click();
 		driver.findElement(By.id("textarea.textField")).clear();
-		driver.findElement(By.id("textarea.textField")).sendKeys("storage");
-		driver.findElement(By.xpath("//div[@id='div.menuItems[54]']/div/div")).click();
-		// check if tab exists
-		assertEquals(isElementPresent(By.xpath("//div[@id='div.menuItems[54]']/div/div")), true);
-
-		// click on the upload and choose file button
-		driver.findElement(By.id("button.uploadButton")).click();
-		driver.findElement(By.id("label.fileInputLabel")).click();
+		driver.findElement(By.id("textarea.textField")).sendKeys("queue");
+		driver.findElement(By.xpath("//div[@id='div.menuItems']/div")).click();
+		//check if tab is present
+		assertEquals(driver.findElement(By.xpath("//div[@id='div.menuItems']/div")), true);
 		
-		//added autoit script to handle file upload
-		String exec = "C:\\Users\\olevs\\git\\Demo\\UserManagementSuite\\AutoIT\\executables\\fileUploadScript.exe";
-		Runtime.getRuntime().exec(exec);
-		// check if file exists
-		assertEquals(Runtime.getRuntime().exec(exec) != null, true);
-		//saving the file
-		driver.findElement(By.xpath("//div[2]/button[2]")).click();
-
-		// adding alias to the uploaded element
-		driver.findElement(By.id("input.input")).click();
-		driver.findElement(By.id("input.input")).clear();
-		driver.findElement(By.id("input.input")).sendKeys("Grisha");
-		driver.findElement(
-				By.xpath("//div[@id='__upisComponents.StorageTab87.editState']/div/floating-controls/div/button"))
+		//choose first item from the queue and replay it
+		driver.findElement(By.xpath("//div[@id='__upisComponents.DataGrid110.tableHolder']/div/table/tbody/tr/td[2]"))
 				.click();
-
-		// choosing uploaded file and delete it
-		driver.findElement(By.xpath("//div[@id='__upisComponents.PojoListItem113.closedState']/div/div")).click();
-		driver.findElement(
-				By.xpath("//div[@id='__upisComponents.StorageTab87.editState']/div/floating-controls/div/button[2]"))
+		driver.findElement(By.id("button.replayButton")).click();
+		
+		//choose same item and cancel it
+		driver.findElement(By.xpath("//div[@id='__upisComponents.DataGrid110.tableHolder']/div/table/tbody/tr/td[5]"))
 				.click();
-		driver.findElement(By.id("button.elmBtnOk")).click();
+		driver.findElement(By.id("button.cancelButton")).click();
+		
+		//download played announcement
+		driver.findElement(
+				By.xpath("//div[@id='__upisComponents.DataGrid110.tableHolder']/div/table/tbody/tr/td[5]/span"))
+				.click();
+		driver.findElement(By.xpath("//a[@id='a.downloadLink']/span")).click();
+		// Autoit script will be added later
+		driver.close();
+		
+		//export queue items
+		driver.findElement(By.xpath("//div[@id='div.contentHolder']/queue-tab/div/floating-controls/div/button[3]/i"))
+				.click();
+		driver.findElement(By.id("input.elm[1]")).clear();
+		driver.findElement(By.id("input.elm[1]")).sendKeys("13-02-2021");
+		driver.findElement(By.id("input.elm")).clear();
+		driver.findElement(By.id("input.elm")).sendKeys("13-01-2021");
+		driver.findElement(By.xpath("//label/div")).click();
+		driver.findElement(By.xpath("//div[4]/label/div")).click();
+		driver.findElement(By.id("input.elm")).clear();
+		driver.findElement(By.id("input.elm")).sendKeys("13-01-2021");
+		driver.findElement(By.id("input.elm[1]")).clear();
+		driver.findElement(By.id("input.elm[1]")).sendKeys("13-02-2021");
+		driver.findElement(By.xpath("//button[2]/i")).click();
+		driver.findElement(By.id("downloadLink")).click();
+		// autoit script will be added later
+		driver.close();
+		// hide expot window
+		driver.findElement(By.xpath("//div[2]/div[2]/button")).click();
 	}
 
 	@AfterClass(alwaysRun = true)
